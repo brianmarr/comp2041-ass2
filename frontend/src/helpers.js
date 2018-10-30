@@ -38,6 +38,12 @@ export function createPostTile(post) {
     const section = createElement('section', null, { class: 'post' });
 
     section.appendChild(createElement('h2', post.meta.author, { class: 'post-title' }));
+    section.appendChild(createElement('p', post.meta.published, { class: 'post-date'}));
+
+    // if post description is included
+    if (post.meta.description_text !== "") {
+        section.appendChild(createElement('p', post.meta.description_text, { class: 'post-content' }));
+    }
 
     section.appendChild(createElement('img', null, 
         { src: '/images/'+post.src, alt: post.meta.description_text, class: 'post-image' }));
@@ -82,4 +88,10 @@ export function checkStore(key) {
     else
         return null
 
+}
+
+
+// Handles clicks on elements in nav bar
+export function navHandler(el) {
+    console.log(el);
 }
