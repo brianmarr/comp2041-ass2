@@ -1,10 +1,7 @@
 // change this when you integrate with the real API, or when u start using the dev server
 const API_URL = 'http://localhost:8080/data'
 
-const getJSON = (path, options) => 
-    fetch(path, options)
-        .then(res => res.json())
-        .catch(err => console.warn(`API_ERROR: ${err.message}`));
+
 
 /**
  * This is a sample class API which you may base your code on.
@@ -20,15 +17,25 @@ export default class API {
         this.url = url;
     } 
 
-    makeAPIRequest(path) {
-        return getJSON(`${this.url}/${path}`);
+    makeAPIRequest(path, options) {
+        return fetch(path, options)
+        .then(res => res.json())
+        .catch(err => console.warn(`API_ERROR: ${err.message}`));
     }
+    
+    makePostRequest(path, options = {}, body = {}) {
+        return fetch(path, { method: 'POST', ...options, body: JSON.stringify(body) })
+        .then(res => res.json())
+        .catch(err => console.warn(`API_ERROR: ${err.message}`));
+    }
+
+    /* GET Request */
 
     /**
      * @returns feed array in json format
      */
-    getFeed() {
-        return this.makeAPIRequest('feed.json');
+    getFeed(token) {
+        return this.makeAPIRequest(`${this.url}/user/feed`, { headers: { Authorization: `Token ${token}` } });
     }
 
     getUsers() {
@@ -38,8 +45,24 @@ export default class API {
     /**
      * @returns auth'd user in json format
      */
-    getMe() {
+    getMe(token) {
         return this.makeAPIRequest('me.json');
     }
 
+    login(username, password) {
+        return this.makePostRequest(`${this.url}/auth/login`, { "headers": { "Content-Type": "application/json" } }, {
+            username, password
+        })
+    }
+
+    /* POST Requests */
+    // login(username password) 
+    // signup
 }
+
+
+/*
+    1. login - holding the token
+    2. save token into localstorage
+
+*/

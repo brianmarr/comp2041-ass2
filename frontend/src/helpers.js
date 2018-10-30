@@ -110,14 +110,6 @@ export function navHandler(el) {
     }
 }
 
-export function loginHandler(users) {
-    const dataEl = document.querySelector('#login-field');
-    const validUsers = users.filter(a => a.username === dataEl.value);
-    
-    if (validUsers.length === 1) {
-        console.log("do later");
-    }
-}
 
 export function registerHandler(users) {
     const dataEl = document.querySelector('#register-field');

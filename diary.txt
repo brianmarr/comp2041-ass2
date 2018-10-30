@@ -1,1 +1,24 @@
-13/10/18     18:00   18:15   put the first real entry in diary.txt (delete this line!)
+30/10/18    13:00   15:00   
+    Dear diary,
+    
+    Coded all of level 0.
+    Includes feed, login, register form handling.
+    
+    Sincerely, Brian
+
+
+30/10/18    17:00   18:00   
+    Dear diary,
+
+    Read documentation on API. Seeded database with actual data using Postman.
+    
+    Sincerely, Brian
+
+
+30/10/18    19:00   00:45
+    Dear diary,
+    
+    Implemented get/push from backend database.
+    Made login request, stored token in local storage, made request for user feed.
+    
+    Sincerely, Brian
