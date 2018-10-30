@@ -31,6 +31,10 @@ export default class API {
         return this.makeAPIRequest('feed.json');
     }
 
+    getUsers() {
+        return this.makeAPIRequest('users.json');
+    }
+
     /**
      * @returns auth'd user in json format
      */

@@ -45,6 +45,10 @@ footer {
     list-style-type: none;
 }
 
+.hide {
+    display: none;
+}
+
 /*
 .post {
     max-width: 640px;
@@ -96,6 +100,15 @@ footer {
     height: 640px;
 }
 
+.user-field {
+    display: flex;
+    justify-content: center;
+}
+
+.register-field {
+    display: flex;
+    justify-content: center;
+}
 
 @media screen and (max-width: 500px) {
     .post {

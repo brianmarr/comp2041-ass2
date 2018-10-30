@@ -93,5 +93,34 @@ export function checkStore(key) {
 
 // Handles clicks on elements in nav bar
 export function navHandler(el) {
-    console.log(el);
+    if (el === "Login") {
+        const body = document.querySelector("#large-feed");
+        const loginForm = document.querySelector('#login-form');
+
+        body.classList.add("hide");
+        loginForm.classList.remove("hide");
+        loginForm.classList.add("user-field");
+    } else if (el === "Register") {
+        const body = document.querySelector("#large-feed");
+        const registerForm = document.querySelector('#register-form');
+
+        body.classList.add("hide");
+        registerForm.classList.remove("hide");
+        registerForm.classList.add("register-field");
+    }
+}
+
+export function loginHandler(users) {
+    const dataEl = document.querySelector('#login-field');
+    const validUsers = users.filter(a => a.username === dataEl.value);
+    
+    if (validUsers.length === 1) {
+        console.log("do later");
+    }
+}
+
+export function registerHandler(users) {
+    const dataEl = document.querySelector('#register-field');
+    
+    console.log("do later");
 }
