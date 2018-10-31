@@ -1,52 +1,55 @@
-
 /* base styles, feel free to edit */
-html, body {
-    margin: 0;
-    padding: 0;
-    background-color: #fafafa;
-    height: 100%;
-    font-family: -apple-system, 'Open Sans', 'Helvetica Neue', sans-serif;
+html,
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #fafafa;
+	height: 100%;
+	font-family: -apple-system, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 .banner {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color:white;
-    min-height: 60px;
-    border-bottom: 1px solid rgba(0,0,0,.0975);
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+	background-color: white;
+	min-height: 60px;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.0975);
 }
 
 footer {
-    border-top: 1px solid rgba(0,0,0,.0975);
-    padding: 10px;
-    background-color:white;
-    min-height: 60px;
-    text-align: right;
+	border-top: 1px solid rgba(0, 0, 0, 0.0975);
+	padding: 10px;
+	background-color: white;
+	min-height: 60px;
+	text-align: right;
 }
 
-.banner > *, footer > * {
-    margin: 10px 25px;
+.banner > *,
+footer > * {
+	margin: 10px 25px;
 }
 
 .nav {
-    list-style-type: none;
-    padding: 0;
+	list-style-type: none;
+	padding: 0;
+	display: flex;
+	justify-content: right;
 }
 
 .nav-item {
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    margin: auto;
-    padding: 5px;
-    display: inline;
-    list-style-type: none;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	margin: auto;
+	padding: 5px;
+	display: inline;
+	list-style-type: none;
 }
 
 .hide {
-    display: none;
+	display: none;
 }
 
 /*
@@ -61,90 +64,97 @@ footer {
 }
 */
 .post {
-    max-width: 640px;
-    margin: 10px auto;
-    padding: 40px 20px;
-    border: 1px solid rgba(0,0,0,.0975);
+	max-width: 640px;
+	margin: 10px auto;
+	padding: 40px 20px;
+	border: 1px solid rgba(0, 0, 0, 0.0975);
 }
 
 .post-content {
-    max-width: 640px;
-    margin: auto;
-    padding: 40px 20px;
+	max-width: 640px;
+	margin: auto;
+	padding: 40px 20px;
 }
 
 .post-date {
-    margin: auto;
-    padding: 0px 20px 20px;
-    font-size: 13px;
-    border-bottom: 1px solid rgba(0,0,0,.0975);
-    color: #777;
+	margin: auto;
+	padding: 0px 20px 20px;
+	font-size: 13px;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.0975);
+	color: #777;
 }
 
 .post-title {
-    padding: 10px 20px;
-    margin: 0;
-    /*border-bottom: 1px solid rgba(0,0,0,.0975);*/
+	padding: 10px 20px;
+	margin: 0;
+	/*border-bottom: 1px solid rgba(0,0,0,.0975);*/
 }
 
 .post-thumb {
-    margin: 0;
-    padding: 3px;
-    width: 150px;
-    height: 150px;
-    border: 2px solid snow;
+	margin: 0;
+	padding: 3px;
+	width: 150px;
+	height: 150px;
+	border: 2px solid snow;
 }
 
 .post-image {
-    width: 640px;
-    height: 640px;
+	width: 640px;
+	height: 640px;
+}
+
+.post-likes-comms {
+	max-width: 640px;
+	margin: auto auto;
+	padding: 40px 20px;
+	font-style: italic;
 }
 
 .user-field {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 10px 200px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 10px 200px;
 }
 
 .register-field {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 10px 200px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 10px 200px;
 }
 
 .indiv-field {
-    margin: 10px 0px;
+	margin: 10px 0px;
 }
 
 .indiv-button {
-    margin: 10px 50px;
-    padding: 20px 0px;
+	margin: 10px 50px;
+	padding: 20px 0px;
 }
 
 .feed-img {
-    display: flex;
-    margin: 0 auto;
+	display: flex;
+	margin: 0 auto;
 }
 
 @media screen and (max-width: 500px) {
-    .post {
-        border: none;
-        border-bottom: 1px solid rgba(0,0,0,.0975);
-        border-top: 1px solid rgba(0,0,0,.0975); 
-        max-height: 60vh;
-    }
+	.post {
+		border: none;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.0975);
+		border-top: 1px solid rgba(0, 0, 0, 0.0975);
+		max-height: 60vh;
+	}
 
-    .post-image {
-        max-width: 100%;
-        max-height: 60vh;
-    }
+	.post-image {
+		max-width: 100%;
+		max-height: 60vh;
+	}
 
-    #feed > * {
-        flex: 1 1 45%;
-        height: auto;
-    }
+	#feed > * {
+		flex: 1 1 45%;
+		height: auto;
+	}
 }
 
 /* Add your styles here */

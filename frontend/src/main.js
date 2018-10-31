@@ -24,6 +24,15 @@ feed.then(posts => {
 */
 
 if (!localStorage.getItem("token")) {
+	// if not already logged in
+
+	// Show login and register button up top
+	const navLogin = document.querySelector("#nav-login");
+	const navRegister = document.querySelector("#nav-register");
+
+	navLogin.classList.remove("hide");
+	navRegister.classList.remove("hide");
+
 	// Nav bar event handler
 	document.querySelector(".nav").addEventListener("click", el => {
 		navHandler(el.target.innerHTML);
@@ -43,12 +52,15 @@ if (!localStorage.getItem("token")) {
 			.then(() =>
 				api.getFeed(window.localStorage.getItem("token")).then(data => {
 					// create feed
+					doFeed(data.posts);
+					/*
 					if (data.posts !== undefined) {
 						data.posts.reduce((parent, post) => {
 							parent.appendChild(createPostTile(post));
 							return parent;
 						}, document.getElementById("large-feed"));
 					}
+					*/
 
 					// hide login form
 					loginForm.classList.add("hide");
@@ -56,6 +68,12 @@ if (!localStorage.getItem("token")) {
 
 					// show feed
 					postsBody.classList.remove("hide");
+
+					// remove login and register nav buttons
+					const navLogin = document.querySelector("#nav-login");
+					const navRegister = document.querySelector("#nav-register");
+					navLogin.classList.add("hide");
+					navRegister.classList.add("hide");
 				})
 			);
 	});
@@ -79,12 +97,7 @@ if (!localStorage.getItem("token")) {
 				//console.log(data.posts); returns array of posts
 
 				// create feed
-				if (data.posts !== undefined) {
-					data.posts.reduce((parent, post) => {
-						parent.appendChild(createPostTile(post));
-						return parent;
-					}, document.getElementById("large-feed"));
-				}
+				doFeed(data.posts);
 
 				// hide login form
 				regForm.classList.add("hide");
@@ -92,15 +105,49 @@ if (!localStorage.getItem("token")) {
 
 				// show feed
 				postsBody.classList.remove("hide");
+
+				// remove login and register nav buttons
+				const navLogin = document.querySelector("#nav-login");
+				const navRegister = document.querySelector("#nav-register");
+				navLogin.classList.add("hide");
+				navRegister.classList.add("hide");
 			});
 	});
 } else {
+	// if already logged in
+
+	// Show logout button
+	const navLogout = document.querySelector("#nav-logout");
+	navLogout.classList.remove("hide");
+
+	// Handle logout button
+	document.querySelector(".nav").addEventListener("click", el => {
+		navHandler(el.target.innerHTML);
+		localStorage.removeItem("token");
+	});
+
+	// Get feed using token in local storage
+	api.getFeed(window.localStorage.getItem("token")).then(data => {
+		// create feed
+		doFeed(data.posts);
+	});
+}
+
+function doFeed(posts) {
+	if (posts !== undefined) {
+		posts.reduce((parent, post) => {
+			parent.appendChild(createPostTile(post));
+			return parent;
+		}, document.getElementById("large-feed"));
+	}
 }
 
 // Potential example to upload an image
+/*
 const input = document.querySelector('input[type="file"]');
 
 input.addEventListener("change", uploadImage);
+*/
 
 /*
 

@@ -39,7 +39,7 @@
     Sincerely, Brian
 
 
-31/10/18    23:00   24:45
+31/10/18    23:00   00:45
     Dear diary,
 
     I feel my sanity slowly slipping.
@@ -49,3 +49,13 @@
     Cleaned up some of feed formatting
 
     Sincerely, Brian
+
+    
+31/10/18    1:00   3:00
+    Dear diary,
+
+    Added check every time page is refreshed to see if user already loggind in (basic test of whether localStorage has token in it).
+    Implemented showing correct number of people who've liked.
+
+    Sincerely, Brian
+

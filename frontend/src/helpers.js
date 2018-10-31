@@ -38,12 +38,15 @@ export function createElement(tag, data, options = {}) {
  * @returns {HTMLElement}
  */
 export function createPostTile(post) {
+	// parent post div
 	const section = createElement("section", null, { class: "post" });
 
+	// create each post element
 	section.appendChild(
 		createElement("h2", post.meta.author, { class: "post-title" })
 	);
 
+	// Date in correct format
 	const date = new Date(parseInt(post.meta.published));
 	section.appendChild(createElement("p", date, { class: "post-date" }));
 
@@ -57,15 +60,22 @@ export function createPostTile(post) {
 	// button:
 	// tag = "button", data = "Like", options = { onclick: "function()" }
 
+	// image
 	const img = new Image();
 	img.src = `data:image/jpeg;base64,${post.src}`;
 	img.alt = post.meta.description_text;
 	img.className = "feed-img";
 	section.appendChild(img);
 
-	/*section.appendChild(createElement('img', null, 
-        { src: '/images'+post.src, alt: post.meta.description_text, class: 'post-image' }));
-    */
+	// likes
+	if (post.meta.likes !== []) {
+		section.appendChild(
+			createElement("p", `${post.meta.likes.length} people like this.`, {
+				class: "post-likes-comms"
+			})
+		);
+	}
+
 	return section;
 }
 
@@ -122,5 +132,13 @@ export function navHandler(el) {
 		registerForm.classList.add("register-field");
 		loginForm.classList.add("hide");
 		loginForm.classList.remove("user-field");
+	} else if (el === "Logout") {
+		const posts = document.getElementsByClassName("post");
+		Array.from(posts).forEach(data => {
+			data.parentNode.removeChild(data);
+		});
+
+		const navLogout = document.querySelector("#nav-logout");
+		navLogout.classList.add("hide");
 	}
 }
