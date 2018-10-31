@@ -1,6 +1,7 @@
 30/10/18    13:00   15:00   
     Dear diary,
     
+    Can't wait to start on the assignment!!!
     Coded all of level 0.
     Includes feed, login, register form handling.
     
@@ -10,14 +11,17 @@
 30/10/18    17:00   18:00   
     Dear diary,
 
+    The 4th hour is upon us.
     Read documentation on API. Seeded database with actual data using Postman.
+    Winter is coming.
     
     Sincerely, Brian
 
 
 30/10/18    19:00   00:45
     Dear diary,
-    
+
+    It's a cold night. Low on food.
     Implemented get/push from backend database.
     Made login request, stored token in local storage, made request for user feed.
     

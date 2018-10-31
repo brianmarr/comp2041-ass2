@@ -30,12 +30,39 @@ document.querySelector(".nav").addEventListener("click", el => {
 
 
 document.querySelector("#login-button").addEventListener("click", el => {
+    const loginForm = document.querySelector('#login-form');
+    const postsBody = document.querySelector("#large-feed");
     const username = document.querySelector('#login-username').value;
     const password = document.querySelector('#login-password').value;
 
-    api.login(username, password)
-        .then(data => window.localStorage.setItem('token', data.token))
-        .then(api.getFeed(window.localStorage.getItem('token')));
+    const feed = api.login(username, password)
+        .then(data => window.localStorage.setItem('token', data.token));
+
+    const feedArr = api.getFeed(window.localStorage.getItem('token'))
+        .then(posts => {
+            console.log(posts);     // gives array of post objects
+            Array.from(posts).reduce((parent, post) => {
+
+                parent.appendChild(createPostTile(post));
+                return parent;
+                
+            }, document.getElementById('large-feed'));
+
+            loginForm.classList.add("hide");
+            loginForm.classList.remove("user-field");
+            
+            postsBody.classList.remove("hide");
+
+
+            
+        });
+    
+    
+
+    
+
+
+
 });
 
 document.querySelector("#register-button").addEventListener("click", el => {
