@@ -46,7 +46,7 @@ export function createPostTile(post) {
     }
 
     section.appendChild(createElement('img', null, 
-        { src: '/images/'+post.src, alt: post.meta.description_text, class: 'post-image' }));
+        { src: '/images'+post.src, alt: post.meta.description_text, class: 'post-image' }));
 
     return section;
 }
@@ -93,26 +93,21 @@ export function checkStore(key) {
 
 // Handles clicks on elements in nav bar
 export function navHandler(el) {
-    if (el === "Login") {
-        const body = document.querySelector("#large-feed");
-        const loginForm = document.querySelector('#login-form');
+    const body = document.querySelector("#large-feed");
+    const loginForm = document.querySelector('#login-form');
+    const registerForm = document.querySelector('#register-form');
 
+    if (el === "Login") {
         body.classList.add("hide");
         loginForm.classList.remove("hide");
         loginForm.classList.add("user-field");
+        registerForm.classList.add("hide");
+        registerForm.classList.remove("register-field");
     } else if (el === "Register") {
-        const body = document.querySelector("#large-feed");
-        const registerForm = document.querySelector('#register-form');
-
         body.classList.add("hide");
         registerForm.classList.remove("hide");
         registerForm.classList.add("register-field");
+        loginForm.classList.add("hide");
+        loginForm.classList.remove("user-field");
     }
-}
-
-
-export function registerHandler(users) {
-    const dataEl = document.querySelector('#register-field');
-    
-    console.log("do later");
 }

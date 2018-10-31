@@ -102,12 +102,25 @@ footer {
 
 .user-field {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    padding: 10px 200px;
 }
 
 .register-field {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    padding: 10px 200px;
+}
+
+.indiv-field {
+    margin: 10px 0px;
+}
+
+.indiv-button {
+    margin: 10px 50px;
+    padding: 20px 0px;
 }
 
 @media screen and (max-width: 500px) {

@@ -55,6 +55,12 @@ export default class API {
         })
     }
 
+    signup(username, password, email, name) {
+        return this.makePostRequest(`${this.url}/auth/signup`, { "headers": { "Content-Type": "application/json" } }, {
+            username, password, email, name
+        })
+    }
+
     /* POST Requests */
     // login(username password) 
     // signup

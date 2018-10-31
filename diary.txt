@@ -26,3 +26,13 @@
     Made login request, stored token in local storage, made request for user feed.
     
     Sincerely, Brian
+
+31/10/18    13:00   15:00
+    Dear diary,
+
+    Water runs short. Time is not my ally.
+    Implemented user feed posting to large-feed div.
+    Implemented signup - push user details into db then carry out same functionality as login.
+    Lots of bugs to still work out. Trying to handle http error responses.
+
+    Sincerely, Brian

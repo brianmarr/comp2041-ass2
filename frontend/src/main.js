@@ -1,5 +1,5 @@
 // importing named exports we use brackets
-import { createPostTile, uploadImage, navHandler, registerHandler } from './helpers.js';
+import { createPostTile, uploadImage, navHandler } from './helpers.js';
 
 // when importing 'default' exports, use below syntax
 import API from './api.js';
@@ -29,45 +29,91 @@ document.querySelector(".nav").addEventListener("click", el => {
 });
 
 
+// Login
 document.querySelector("#login-button").addEventListener("click", el => {
     const loginForm = document.querySelector('#login-form');
     const postsBody = document.querySelector("#large-feed");
     const username = document.querySelector('#login-username').value;
     const password = document.querySelector('#login-password').value;
 
+    // get token and store in localStorage
     const feed = api.login(username, password)
         .then(data => window.localStorage.setItem('token', data.token));
+        
 
+    
+    // retrieve token from localStorage
     const feedArr = api.getFeed(window.localStorage.getItem('token'))
-        .then(posts => {
-            console.log(posts);     // gives array of post objects
-            Array.from(posts).reduce((parent, post) => {
+        .then(data => {
+            //console.log(data.posts); //returns array of posts
 
-                parent.appendChild(createPostTile(post));
-                return parent;
-                
-            }, document.getElementById('large-feed'));
+            // create feed
+            if (data.posts !== undefined) {
+                data.posts.reduce((parent, post) => {
 
+                    parent.appendChild(createPostTile(post));
+                    return parent;
+                    
+                }, document.getElementById('large-feed'));
+            }
+
+            // hide login form
             loginForm.classList.add("hide");
             loginForm.classList.remove("user-field");
-            
+
+            // show feed
             postsBody.classList.remove("hide");
-
-
             
         });
-    
-    
-
-    
-
-
-
 });
 
+
+
+// Register (does push to /auth/signup then follows same procedure as login)
+document.querySelector("#register-button").addEventListener("click", el => {
+    const regForm = document.querySelector('#register-form');
+    const postsBody = document.querySelector("#large-feed");
+
+    const username = document.querySelector('#register-username').value;
+    const password = document.querySelector('#register-password').value;
+    const email = document.querySelector('#register-email').value;
+    const name = document.querySelector('#register-name').value;
+
+    // get token and store in localStorage
+    const feed = api.signup(username, password, email, name)
+        .then(data => window.localStorage.setItem('token', data.token));
+
+    // retrieve token from localStorage
+    const feedArr = api.getFeed(window.localStorage.getItem('token'))
+        .then(data => {
+            //console.log(data.posts); returns array of posts
+
+            // create feed
+            if (data.posts !== undefined) {
+                data.posts.reduce((parent, post) => {
+
+                    parent.appendChild(createPostTile(post));
+                    return parent;
+                    
+                }, document.getElementById('large-feed'));
+                
+            }
+
+            // hide login form
+            regForm.classList.add("hide");
+            regForm.classList.remove("register-field");
+
+            // show feed
+            postsBody.classList.remove("hide");
+            
+        });
+});
+
+/*
 document.querySelector("#register-button").addEventListener("click", el => {
     registerHandler(data);
 });
+*/
 
 
 // Potential example to upload an image
