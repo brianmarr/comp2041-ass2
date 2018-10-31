@@ -123,6 +123,11 @@ footer {
     padding: 20px 0px;
 }
 
+.feed-img {
+    display: flex;
+    margin: 0 auto;
+}
+
 @media screen and (max-width: 500px) {
     .post {
         border: none;

@@ -27,6 +27,7 @@
     
     Sincerely, Brian
 
+
 31/10/18    13:00   15:00
     Dear diary,
 
@@ -34,5 +35,17 @@
     Implemented user feed posting to large-feed div.
     Implemented signup - push user details into db then carry out same functionality as login.
     Lots of bugs to still work out. Trying to handle http error responses.
+
+    Sincerely, Brian
+
+
+31/10/18    23:00   24:45
+    Dear diary,
+
+    I feel my sanity slowly slipping.
+    Got images and proper date formats working.
+    Fixed bug with login/register and getFeed where both were called synchronously accidentally.
+    Made test calls on Postman for /post/comment and /post/like
+    Cleaned up some of feed formatting
 
     Sincerely, Brian
